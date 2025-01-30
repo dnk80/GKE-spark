@@ -6,7 +6,8 @@ metadata:
 spec:
   type: Scala
   mode: cluster
-  image: gcr.io/spark-operator/spark:v3.1.1
+  #image: gcr.io/spark-operator/spark:v3.1.1
+  image: gcr.io/ynli-k8s/spark:v2.3.0-gcs
   imagePullPolicy: Always
   mainClass: org.apache.spark.examples.SparkPi
   mainApplicationFile: "local:///opt/spark-job-access-gcs.py"
