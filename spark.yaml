@@ -9,8 +9,10 @@ spec:
   image: gcr.io/spark-operator/spark:v3.1.1
   imagePullPolicy: Always
   mainClass: org.apache.spark.examples.SparkPi
-  mainApplicationFile: "local:///opt/py-script"
+  mainApplicationFile: "local:///opt/spark-job-access-gcs.py"
   sparkVersion: "3.1.1"
+  sparkConf:
+    spark.eventlog.enabled: "true"
   restartPolicy:
     type: Never
   driver:
@@ -19,9 +21,19 @@ spec:
     labels:
       version: driver
 #    serviceAccount: spark
+    volumeMounts:
+      - mountPath: /opt
+        name: py-script
   executor:
     cores: 1
     instances: 2
     memory: 512m
     labels:
       version: executor
+  volumes:
+    - name: py-script
+    configMap:
+      name: py-script-map
+      items:
+        - key: spark-job-access-gcs.py
+          path: spark-job-access-gcs.py
