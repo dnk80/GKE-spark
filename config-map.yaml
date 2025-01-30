@@ -9,7 +9,7 @@ data:
     import pyspark 
     import sys
     
-    BUCKET = "test-gcs"
+    BUCKET = "test-gcs-418919"
     inputUri=f"gs://{BUCKET}/test-file.txt" outputUri=f"gs://{BUCKET}/test_file_output"
     sc = pyspark.SparkContext
     lines = sc.textFile(inputUri)
