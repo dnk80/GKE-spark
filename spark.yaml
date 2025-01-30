@@ -32,8 +32,8 @@ spec:
       version: executor
   volumes:
     - name: py-script
-    configMap:
-      name: py-script-map
-      items:
-        - key: spark-job-access-gcs.py
-          path: spark-job-access-gcs.py
+      configMap:
+        name: py-script-map
+        items:
+          - key: spark-job-access-gcs.py
+            path: spark-job-access-gcs.py
