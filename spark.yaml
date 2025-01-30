@@ -22,8 +22,9 @@ spec:
       version: driver
     #serviceAccount: spark
     volumeMounts:
-      - mountPath: /opt
-        name: py-script
+    - name: py-script
+      mountPath: /opt/spark-job-access-gcs.py
+      subPath: spark-job-access-gcs.py        
   executor:
     cores: 1
     instances: 2
@@ -31,9 +32,9 @@ spec:
     labels:
       version: executor
   volumes:
-    - name: py-script
+    - name: py-script-vol
       configMap:
         name: py-script-map
-        items:
-          - key: spark-job-access-gcs.py
-            path: /opt/spark-job-access-gcs.py
+   #     items:
+   #       - key: spark-job-access-gcs.py
+   #         path: /opt/spark-job-access-gcs.py
