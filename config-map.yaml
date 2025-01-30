@@ -10,7 +10,8 @@ data:
     import sys
     
     BUCKET = "test-gcs-418919"
-    inputUri=f"gs://{BUCKET}/test-file.txt" outputUri=f"gs://{BUCKET}/test_file_output"
+    inputUri=f"gs://{BUCKET}/test.txt" 
+    outputUri=f"gs://{BUCKET}/test_file_output"
     sc = pyspark.SparkContext
     lines = sc.textFile(inputUri)
     words = lines.flatMap(lambda line: line.split)
