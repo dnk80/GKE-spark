@@ -20,7 +20,7 @@ spec:
     memory: 512m
     labels:
       version: driver
-#    serviceAccount: spark
+    #serviceAccount: spark
     volumeMounts:
       - mountPath: /opt
         name: py-script
@@ -36,4 +36,4 @@ spec:
         name: py-script-map
         items:
           - key: spark-job-access-gcs.py
-            path: spark-job-access-gcs.py
+            path: /opt/spark-job-access-gcs.py
