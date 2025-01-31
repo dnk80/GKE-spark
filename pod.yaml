@@ -27,7 +27,7 @@ spec:
     secret:
       secretName: gcs-bq
       items:
-        - key: data
+        - key: comp.json
           path: key.json
     
     
