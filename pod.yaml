@@ -10,7 +10,8 @@ spec:
       #image: gcr.io/google_containers/busybox
       #image: gcr.io/ynli-k8s/spark:v2.3.0-gcs # - can`t download
       image: google/cloud-sdk:alpine
-      command: [ "/bin/sh","-c","cat /opt/spark-job-access-gcs.py" ]
+      #command: [ "/bin/sh","-c","cat /opt/spark-job-access-gcs.py" ]
+      command: [ "/bin/sh","-c","top" ]
       volumeMounts:
       - name: py-script-vol
         mountPath: /opt
