@@ -10,7 +10,7 @@ spec:
   imagePullPolicy: Always
   mainClass: org.apache.spark.examples.SparkPi
   mainApplicationFile: "local:///opt/spark-job-access-gcs.py"
-  sparkVersion: "3.1.1"
+  sparkVersion: "3.5.3"
   sparkConf:
     spark.eventlog.enabled: "true"
   restartPolicy:
