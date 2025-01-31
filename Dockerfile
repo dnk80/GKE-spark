@@ -1,3 +1,4 @@
+# Source https://github.com/kubeflow/spark-operator/blob/master/spark-docker/Dockerfile
 #
 # Copyright 2018 Google LLC
 #
