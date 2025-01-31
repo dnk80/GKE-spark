@@ -11,7 +11,7 @@ spec:
   mainClass: org.apache.spark.examples.SparkPi
   mainApplicationFile: "local:///opt/spark-job-access-gcs.py"
   hadoopConf:
-    fs.gs.project.id: "test-gcs-418919"
+    fs.gs.project.id: "for-test"
     fs.gs.system.bucket: "test-gcs-418919"
     google.cloud.auth.service.account.enable: "true"
     google.cloud.auth.service.account.json.keyfile: "/mnt/key.json"
