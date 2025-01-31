@@ -22,3 +22,6 @@ kubectl get sparkapp spark-pi
 # Create Secret form credential file
 kubectl create secret generic gcs-bq  --from-file=comp.json -n pyfarm
 ```
+
+custom image with GCS support 
+us-central1-docker.pkg.dev/for-test-418919/spark/spark-gcs:3.5.3
