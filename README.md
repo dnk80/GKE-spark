@@ -25,3 +25,8 @@ kubectl create secret generic gcs-bq  --from-file=comp.json -n pyfarm
 
 custom image with GCS support 
 us-central1-docker.pkg.dev/for-test-418919/spark/spark-gcs:3.5.3
+
+```
+kubectl annotate serviceaccount spark-operator-spark iam.gke.io/gcp-service-account=SA_NAME@.com -n default
+gcloud iam service-accounts add-iam-policy-binding --role roles/iam.workloadIdentityUser --member "serviceAccount:PROJECT_ID.svc.id.goog[default/spark-operator-spark]" SA_NAME@.com
+```
