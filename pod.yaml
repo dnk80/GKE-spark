@@ -25,7 +25,7 @@ spec:
           path: spark-job-access-gcs.py
     name: key-vol
     secret:
-      name: gcs-bq
+      secretName: gcs-bq
       items:
         - key: data
           path: key.json
