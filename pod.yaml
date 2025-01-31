@@ -14,6 +14,8 @@ spec:
       volumeMounts:
       - name: py-script-vol
         mountPath: /opt
+        name: key-vol
+        mountPath: /mnt
   volumes:
   - name: py-script-vol
     configMap:
@@ -21,4 +23,12 @@ spec:
       items:
         - key: spark-job-access-gcs.py
           path: spark-job-access-gcs.py
+    name: key-vol
+    secrets:
+      name: gcs-bq
+      items:
+        - key: data
+          path: key.json
+    
+    
   restartPolicy: Never
