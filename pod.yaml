@@ -1,0 +1,22 @@
+---
+kind: Pod
+metadata:
+  name: test-pod
+  namespace: pyfarm
+spec:
+  containers:
+    - name: test-container
+      #image: gcr.io/google_containers/busybox
+      image: gcr.io/ynli-k8s/spark:v2.3.0-gcs
+      command: [ "/bin/sh","-c","cat /opt/spark-job-access-gcs.py" ]
+      volumeMounts:
+      - name: py-script-vol
+        mountPath: /opt
+  volumes:
+  - name: py-script-vol
+    configMap:
+      name: py-script-map
+      items:
+        - key: spark-job-access-gcs.py
+          path: spark-job-access-gcs.py
+  restartPolicy: Never
