@@ -3,14 +3,11 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: test-pod
-  namespace: pyfarm
+  namespace: default
 spec:
   containers:
     - name: test-container
-      #image: gcr.io/google_containers/busybox
-      #image: gcr.io/ynli-k8s/spark:v2.3.0-gcs # - can`t download
       image: google/cloud-sdk:alpine
-      #command: [ "/bin/sh","-c","cat /opt/spark-job-access-gcs.py" ]
       command: [ "/bin/sh","-c","top" ]
       volumeMounts:
       - name: py-script-vol
