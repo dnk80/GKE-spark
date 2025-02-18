@@ -1,3 +1,5 @@
+In this Demo SparkJob, the script which storing in Config-map is implemented that accesses a Google Bucket, reads a file, and writes the processing result back to the Google Bucket.
+
 # GKE Spark Application Installation
 
 ## GKE Installation
@@ -16,7 +18,7 @@ clusters create-auto "autopilot-cluster-1" \
 ```
 Connecting to the cluster
 ```commandline
-gcloud container clusters get-credentials autopilot-cluster-1 --region us-central1 --project for-test-418919
+gcloud container clusters get-credentials autopilot-cluster-1 --region us-central1 --project <PROJECT_ID>
 ```
 
 ## Spark Application Helm Chart installation
@@ -88,26 +90,26 @@ To successfully launch a SparkJob with a Custom Image using the spark-operation-
 
 Create a service account and assign on it the necessary roles
 ```commandline
-gcloud projects add-iam-policy-binding for-test-418919 \
---member='serviceAccount:spark-sa@for-test-418919.iam.gserviceaccount.com' \
+gcloud projects add-iam-policy-binding <PROJECT_ID> \
+--member='serviceAccount:spark-sa@<PROJECT_ID>.iam.gserviceaccount.com' \
 --role='roles/artifactregistry.reader'
 
-gcloud projects add-iam-policy-binding for-test-418919 \
---member='serviceAccount:spark-sa@for-test-418919.iam.gserviceaccount.com' \
+gcloud projects add-iam-policy-binding <PROJECT_ID> \
+--member='serviceAccount:spark-sa@<PROJECT_ID>.iam.gserviceaccount.com' \
 --role='roles/storage.objectAdmin'
 ```
 Linking KSA spark-operation-spark to GCP IAM SA
 ```commandline
 gcloud iam service-accounts add-iam-policy-binding \
 --role roles/iam.workloadIdentityUser \
---member "serviceAccount:for-test-418919.svc.id.goog[default/spark-operator-spark]" \
-spark-sa@for-test-418919.iam.gserviceaccount.com
+--member "serviceAccount:<PROJECT_ID>.svc.id.goog[default/spark-operator-spark]" \
+spark-sa@<PROJECT_ID>.iam.gserviceaccount.com
 ```
 
 And don't forget about the annotation
 ```commandline
 kubectl annotate serviceaccount spark-operator-spark \
-iam.gke.io/gcp-service-account=spark-sa@for-test-418919.iam.gserviceaccount.com \
+iam.gke.io/gcp-service-account=spark-sa@<PROJECT_ID>.iam.gserviceaccount.com \
 -n default
 ```
 ## Run SparkJob
@@ -162,5 +164,3 @@ gs://test-gcs-418919/test_file_output/_SUCCESS
 gs://test-gcs-418919/test_file_output/part-00000  
 gs://test-gcs-418919/test_file_output/part-00001
 ```
-
-
