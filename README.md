@@ -1,5 +1,5 @@
 In this Demo SparkJob, the script which storing in Config-map is implemented that accesses a Google Bucket, reads a file, and writes the processing result back to the Google Bucket.
-
+![](./GKE-Spark.jpg)
 # GKE Spark Application Installation
 
 ## GKE Installation
@@ -71,7 +71,7 @@ spark-operator-webhook      0         18s
 KSA `spark-operation-spark` that will be used in our SparkJob
 
 ## Preparation Spark image to work with GCP Services
-Spark basic image by default does not know how to work with Google Cloud Storage gs-filesystem and does not know how to work with Big Query. To work with these services, you need to build a custom docker image with the necessary libraries using this Dockerfile
+Spark basic image by default does not know how to work with Google Cloud Storage gs-filesystem and does not know how to work with Big Query. To work with these services, you need to build a custom docker image with the necessary libraries using this [Dockerfile](https://github.com/dnk80/GKE-spark/blob/main/Dockerfile)
 
 ```commandline
 # Build docker image
