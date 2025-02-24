@@ -32,7 +32,7 @@ helm repo update
 
 ```commandline
 # Install Spark Application in namespace default
-helm install spark-operator spark-operator/spark-operator --namespace spark-operator --create-namespace --set webhook.enable=true
+helm install spark-operator spark-operator/spark-operator --namespace default --create-namespace --set webhook.enable=true
 ```
 
 I would like to draw special attention to the webhook parameter. It is Webhook that allows you to mount volumes (pvc, config-map, GCS) in SparkJob in driver executor pods.
